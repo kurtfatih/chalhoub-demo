@@ -1,0 +1,23 @@
+type Rating {
+  rate: Float
+  count: Int
+}
+
+type Product {
+  id: Int!
+  title: String!
+  price: Float!
+  description: String!
+  category: String!
+  image: String!
+  rating: Rating!
+  slug: String!
+}
+
+# The "Query" type is special: it lists all of the available queries that
+# clients can execute, along with the return type for each. In this
+# case, the "books" query returns an array of zero or more Books (defined above).
+type Query {
+  products: [Product]
+  getProductBySlug(slug: String): Product
+}
