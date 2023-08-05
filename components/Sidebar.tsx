@@ -5,7 +5,7 @@ import { TagSelection } from "./ui/TagSelection"
 
 const Sidebar = () => {
   return (
-    <aside className="w-full mr-8 top-36 mb-48">
+    <aside className="w-full z-50 fixed md:sticky mr-8 md:top-36 md:mb-48">
       <div className="bg-white shadow-md ">
         <div className="flex flex-col w-full">
           <ColorAccordion />

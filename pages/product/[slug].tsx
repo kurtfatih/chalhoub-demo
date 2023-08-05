@@ -4,22 +4,22 @@ import ReviewStars from "../../components/ReviewStar"
 import { GetServerSideProps, InferGetServerSidePropsType } from "next/types"
 import { GetProductBySlugQuery } from "../../lib/apollo-client/__generated__/graphql"
 import { initializeApollo } from "../../lib/apollo-client/root"
+import { LinkButton } from "../../components/Button"
 
 export default function ProductDetailPage({
   product
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
     <div className="pt-36 container mx-auto">
-      <div className="flex gap-6">
+      <div className="flex px-4 flex-col md:flex-row  gap-6">
         <div className="flex w-full">
-          <div className="flex w-full justify-end bg-white">
+          <div className="flex w-full md:justify-end bg-white">
             <div
               style={{
                 position: "relative",
-                width: "100%",
-                height: "500px",
-                maxWidth: "500px"
+                width: "100%"
               }}
+              className="h-64 md:h-96"
             >
               {product?.image && (
                 <Image
@@ -32,12 +32,12 @@ export default function ProductDetailPage({
             </div>
           </div>
         </div>
-        <div className="flex w-full">
+        <div className="flex pb-4 w-full">
           <div className="flex w-full bg-white">
-            <div className="flex w-3/4 flex-col gap-16">
+            <div className="flex w-full md:w-3/4 flex-col gap-16">
               <div className="flex w-full gap-8 flex-col">
                 <div>
-                  <h1 className="text-4xl font-bold text-s leading-[100px]">
+                  <h1 className="text-3xl md:text-4xl font-bold text-s leading-[100px]">
                     {product.title}
                   </h1>
                 </div>
@@ -54,7 +54,7 @@ export default function ProductDetailPage({
                 </div>
               </div>
 
-              <div className="w-full flex items-baseline justify-between">
+              <div className="w-full flex-col md:flex-row flex items-baseline justify-between">
                 <div className="flex items-start">
                   <ReviewStars
                     count={product.rating.count ?? 0}
@@ -62,13 +62,8 @@ export default function ProductDetailPage({
                     size="xl"
                   />
                 </div>
-                <div>
-                  <a
-                    href="#"
-                    className="text-white transition-all bg-black hover:bg-brand-red focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-16 py-5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                  >
-                    Buy Now
-                  </a>
+                <div className="flex justify-end w-full md:w-auto mt-1">
+                  <LinkButton title="Buy now" href="" />
                 </div>
               </div>
             </div>

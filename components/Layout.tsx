@@ -15,9 +15,9 @@ export const MainLayout: React.FC<{ children: React.ReactNode }> = ({
   }, [columnCount])
 
   return (
-    <div className="min-h-screen">
+    <div className="w-full">
       {/* Navigation Bar */}
-      <nav className="fixed z-50 w-full bg-white p-10 text-white">
+      <nav className="fixed z-50 w-full bg-white p-5 md:p-10 text-white">
         <div className="container mx-auto flex justify-between items-center">
           <Link href="/">
             <h1 className="text-2xl text-black font-semibold cursor-pointer transform transition hover:scale-105">
@@ -27,13 +27,13 @@ export const MainLayout: React.FC<{ children: React.ReactNode }> = ({
 
           <div
             onClick={handleChangeColumnCount}
-            className="cursor-pointer transform transition hover:scale-105 flex flex-row"
+            className="cursor-pointer hidden md:block transform transition hover:scale-105 flex flex-row"
           >
             <ViewColumnsIcon color="black" className="h-6" />
           </div>
         </div>
       </nav>
-      <div>{children}</div>
+      {children}
     </div>
   )
 }
