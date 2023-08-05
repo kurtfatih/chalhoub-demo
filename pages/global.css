@@ -4,6 +4,6 @@
 @tailwind theme;
 
 body {
-  background-color: theme("colors.gray.100");
+  background-color: #fff;
   font-family: "Poppins", sans-serif;
 }

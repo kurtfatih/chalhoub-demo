@@ -16,6 +16,20 @@ export const resolvers = {
       const product = products.find((value) => value.slug() === args.slug)
 
       return product!
+    },
+    getProductsColors: async (
+      _: any,
+      args: { slug: string },
+      contextValue: ContextType
+    ) => {
+      const colors =
+        await contextValue.dataSources.productApi.getProductsColors()
+
+      const uniqueColors = colors.filter(
+        (color, index, array) => array.indexOf(color) === index
+      )
+
+      return uniqueColors
     }
   }
 }

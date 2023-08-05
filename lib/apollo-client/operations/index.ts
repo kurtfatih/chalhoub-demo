@@ -13,12 +13,14 @@ export const GET_PRODUCTS = graphql(`
       }
       title
       slug
+      colors
+      tags
     }
   }
 `)
 
 export const GET_PRODUCTS_BY_SLUG = graphql(`
-  query GetProductBySlug($productSlug: String) {
+  query GetProductBySlug($productSlug: String!) {
     getProductBySlug(slug: $productSlug) {
       title
       description
@@ -30,5 +32,11 @@ export const GET_PRODUCTS_BY_SLUG = graphql(`
         rate
       }
     }
+  }
+`)
+
+export const GET_PRODUCTS_COLORS = graphql(`
+  query ProductsColors {
+    getProductsColors
   }
 `)

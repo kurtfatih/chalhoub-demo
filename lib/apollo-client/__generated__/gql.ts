@@ -13,8 +13,9 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel or swc plugin for production.
  */
 const documents = {
-    "\n  query GetProducts {\n    products {\n      id\n      category\n      image\n      price\n      rating {\n        count\n        rate\n      }\n      title\n      slug\n    }\n  }\n": types.GetProductsDocument,
-    "\n  query GetProductBySlug($productSlug: String) {\n    getProductBySlug(slug: $productSlug) {\n      title\n      description\n      category\n      image\n      price\n      rating {\n        count\n        rate\n      }\n    }\n  }\n": types.GetProductBySlugDocument,
+    "\n  query GetProducts {\n    products {\n      id\n      category\n      image\n      price\n      rating {\n        count\n        rate\n      }\n      title\n      slug\n      colors\n      tags\n    }\n  }\n": types.GetProductsDocument,
+    "\n  query GetProductBySlug($productSlug: String!) {\n    getProductBySlug(slug: $productSlug) {\n      title\n      description\n      category\n      image\n      price\n      rating {\n        count\n        rate\n      }\n    }\n  }\n": types.GetProductBySlugDocument,
+    "\n  query ProductsColors {\n    getProductsColors\n  }\n": types.ProductsColorsDocument,
 };
 
 /**
@@ -34,11 +35,15 @@ export function graphql(source: string): unknown;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  query GetProducts {\n    products {\n      id\n      category\n      image\n      price\n      rating {\n        count\n        rate\n      }\n      title\n      slug\n    }\n  }\n"): (typeof documents)["\n  query GetProducts {\n    products {\n      id\n      category\n      image\n      price\n      rating {\n        count\n        rate\n      }\n      title\n      slug\n    }\n  }\n"];
+export function graphql(source: "\n  query GetProducts {\n    products {\n      id\n      category\n      image\n      price\n      rating {\n        count\n        rate\n      }\n      title\n      slug\n      colors\n      tags\n    }\n  }\n"): (typeof documents)["\n  query GetProducts {\n    products {\n      id\n      category\n      image\n      price\n      rating {\n        count\n        rate\n      }\n      title\n      slug\n      colors\n      tags\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  query GetProductBySlug($productSlug: String) {\n    getProductBySlug(slug: $productSlug) {\n      title\n      description\n      category\n      image\n      price\n      rating {\n        count\n        rate\n      }\n    }\n  }\n"): (typeof documents)["\n  query GetProductBySlug($productSlug: String) {\n    getProductBySlug(slug: $productSlug) {\n      title\n      description\n      category\n      image\n      price\n      rating {\n        count\n        rate\n      }\n    }\n  }\n"];
+export function graphql(source: "\n  query GetProductBySlug($productSlug: String!) {\n    getProductBySlug(slug: $productSlug) {\n      title\n      description\n      category\n      image\n      price\n      rating {\n        count\n        rate\n      }\n    }\n  }\n"): (typeof documents)["\n  query GetProductBySlug($productSlug: String!) {\n    getProductBySlug(slug: $productSlug) {\n      title\n      description\n      category\n      image\n      price\n      rating {\n        count\n        rate\n      }\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  query ProductsColors {\n    getProductsColors\n  }\n"): (typeof documents)["\n  query ProductsColors {\n    getProductsColors\n  }\n"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};

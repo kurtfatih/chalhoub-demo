@@ -1,4 +1,5 @@
 import { ApolloServer } from "@apollo/server"
+import { ApolloServerPluginLandingPageDisabled } from "@apollo/server/plugin/disabled"
 import { startServerAndCreateNextHandler } from "@as-integrations/next"
 import { resolvers } from "../../lib/graphql/resolvers"
 import typeDefs from "../../lib/graphql/schema.graphql"
@@ -15,7 +16,11 @@ export type ContextType = {
 
 const server = new ApolloServer<ContextType>({
   resolvers,
-  typeDefs
+  typeDefs,
+  plugins:
+    process.env.NODE_ENV === "production"
+      ? [ApolloServerPluginLandingPageDisabled()]
+      : undefined
 })
 
 export default startServerAndCreateNextHandler(server, {

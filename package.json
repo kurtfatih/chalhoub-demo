@@ -13,12 +13,15 @@
     "@apollo/client": "^3.3.11",
     "@apollo/server": "^4.9.0",
     "@as-integrations/next": "^2.0.1",
-    "@tanstack/react-query": "^4.32.1",
+    "@headlessui/react": "^1.7.16",
+    "@heroicons/react": "^2.0.18",
+    "@tailwindcss/forms": "^0.5.4",
     "axios": "^1.4.0",
     "graphql": "^15.5.0",
-    "next": "12.1.2",
-    "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "next": "^13.4.12",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "zustand": "^4.4.0"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^5.0.0",
