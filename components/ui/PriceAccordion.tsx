@@ -1,9 +1,16 @@
+import { priceOptions, priceSortOptions } from "../../constants"
 import { useStore } from "../../lib/zustand/store"
 import { parseThePricesRangeStringToNumber } from "../../utils"
 import Accordion from "../Accordion"
 import { Checkbox } from "../Checkbox"
 
-export const PriceAccordion = () => {
+interface PriceAccordionPropsI {
+  defaultOpen?: boolean
+}
+
+export const PriceAccordion: React.FC<PriceAccordionPropsI> = ({
+  defaultOpen = false
+}) => {
   const { setPrices, prices, sortByPrice, setSortByPrice } = useStore()
 
   const handlePrices = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -12,6 +19,7 @@ export const PriceAccordion = () => {
     if (e.currentTarget.checked) {
       setPrices([...prices, { start: value.start, end: value.end }])
     } else {
+      console.debug("hey", prices)
       setPrices(
         prices.filter(
           ({ start, end }) => start !== value.start && end !== value.end
@@ -33,7 +41,7 @@ export const PriceAccordion = () => {
   }
 
   return (
-    <Accordion defaultOpen={false} title="Price">
+    <Accordion defaultOpen={defaultOpen} title="Price">
       <label>Price</label>
       <div className="h-4" />
       <div className="flex flex-col">
@@ -43,7 +51,7 @@ export const PriceAccordion = () => {
             key={index}
             label={price.label}
             value={price.label}
-            checked={prices.some(
+            defaultChecked={prices.some(
               (prevPrice) =>
                 prevPrice.start === price.value.start &&
                 prevPrice.end === price.value.end
@@ -62,22 +70,10 @@ export const PriceAccordion = () => {
             key={index}
             label={label}
             value={value}
-            checked={value === sortByPrice}
+            defaultChecked={value === sortByPrice}
           />
         ))}
       </div>
     </Accordion>
   )
 }
-
-const priceOptions = [
-  { label: "0-100", value: { start: 0, end: 100 } },
-  { label: "100-200", value: { start: 100, end: 200 } },
-  { label: "200-300", value: { start: 200, end: 300 } },
-  { label: "500-1000", value: { start: 500, end: 1000 } }
-]
-
-const priceSortOptions = [
-  { value: "desc", label: "High to Low" },
-  { value: "asc", label: "Low to High" }
-]

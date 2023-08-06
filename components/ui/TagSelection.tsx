@@ -1,6 +1,7 @@
 import { useState } from "react"
 import Selection from "../Selection"
 import { useStore } from "../../lib/zustand/store"
+import { tags } from "../../constants"
 
 export const TagSelection: React.FC = () => {
   const [selected, setSelected] = useState(tags[0])
@@ -25,10 +26,3 @@ export const TagSelection: React.FC = () => {
     />
   )
 }
-
-const tags = [
-  { label: "No tag selected...", value: "" },
-  { label: "Recommended", value: "Recommended" },
-  { label: "New", value: "New" },
-  { label: "Cheapest", value: "Cheapest" }
-]

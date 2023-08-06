@@ -15,10 +15,18 @@ export const Selection: React.FC<SelectionPropsI> = ({
 }) => {
   return (
     <div className="w-full">
-      <Listbox value={selected} onChange={onChange}>
+      <Listbox data-testid="listbox-root" value={selected} onChange={onChange}>
         <div className="relative">
-          <Listbox.Button className="relative w-full cursor-default bg-black py-2 pl-3 pr-10 text-white text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
-            <span className="block truncate">{selected.label}</span>
+          <Listbox.Button
+            data-testid="listbox-button"
+            className="relative w-full cursor-default bg-black py-2 pl-3 pr-10 text-white text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm"
+          >
+            <span
+              data-testid="selected-option-label"
+              className="block truncate"
+            >
+              {selected.label}
+            </span>
             <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4">
               <ChevronUpDownIcon
                 className="h-5 w-5 text-white"

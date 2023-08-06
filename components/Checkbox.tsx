@@ -4,24 +4,25 @@ interface CheckboxPropsI {
   label: string
   value: any
   onChange: React.ChangeEventHandler<HTMLInputElement>
-  checked?: boolean
+  defaultChecked?: boolean
 }
 
 export const Checkbox: React.FC<CheckboxPropsI> = ({
   label,
   value,
   onChange,
-  checked
+  defaultChecked
 }) => {
   return (
     <div className="flex items-center mb-4">
       <input
+        data-testid={`${label}-checkbox`}
         id={`${label}-checkbox`}
         type="checkbox"
         value={value}
         className="w-4 h-4 text-red-600 bg-gray-100 border-gray-300 rounded focus:ring-red-500 dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
         onChange={onChange}
-        checked={checked}
+        defaultChecked={defaultChecked}
       />
       <label
         htmlFor={`${label}-checkbox`}

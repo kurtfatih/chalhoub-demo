@@ -4,7 +4,7 @@ import ReviewStars from "../../components/ReviewStar"
 import { GetServerSideProps, InferGetServerSidePropsType } from "next/types"
 import { GetProductBySlugQuery } from "../../lib/apollo-client/__generated__/graphql"
 import { initializeApollo } from "../../lib/apollo-client/root"
-import { LinkButton } from "../../components/Button"
+import { Button } from "../../components/Button"
 
 export default function ProductDetailPage({
   product
@@ -24,8 +24,8 @@ export default function ProductDetailPage({
               {product?.image && (
                 <Image
                   src={product.image}
-                  layout="fill"
-                  objectFit="contain"
+                  fill
+                  style={{ objectFit: "contain" }}
                   alt="product image"
                 />
               )}
@@ -38,18 +38,18 @@ export default function ProductDetailPage({
               <div className="flex w-full gap-8 flex-col">
                 <div>
                   <h1 className="text-3xl md:text-4xl font-bold text-s leading-[100px]">
-                    {product.title}
+                    {product?.title}
                   </h1>
                 </div>
                 <div>
                   <h3 className="text-4xl font-semibold text-brand-red">
-                    $ {product.price}
+                    $ {product?.price}
                   </h3>
                 </div>
 
                 <div>
                   <h3 className="text-sm text-gray-600  font-semibold">
-                    {product.description}
+                    {product?.description}
                   </h3>
                 </div>
               </div>
@@ -57,13 +57,13 @@ export default function ProductDetailPage({
               <div className="w-full flex-col md:flex-row flex items-baseline justify-between">
                 <div className="flex items-start">
                   <ReviewStars
-                    count={product.rating.count ?? 0}
-                    rate={product.rating.rate ?? 0}
+                    count={product?.rating.count ?? 0}
+                    rate={product?.rating.rate ?? 0}
                     size="xl"
                   />
                 </div>
                 <div className="flex justify-end w-full md:w-auto mt-1">
-                  <LinkButton title="Buy now" href="" />
+                  <Button title="Buy now" />
                 </div>
               </div>
             </div>
@@ -75,7 +75,7 @@ export default function ProductDetailPage({
 }
 
 export const getServerSideProps: GetServerSideProps<{
-  product: GetProductBySlugQuery["getProductBySlug"]
+  product: GetProductBySlugQuery["getProductBySlug"] | null
 }> = async ({ query }) => {
   const { slug } = query
   const client = initializeApollo()

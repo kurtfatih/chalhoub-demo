@@ -3,7 +3,7 @@ import { GetProductsQuery } from "../../../lib/apollo-client/__generated__/graph
 import ReviewStars from "../../ReviewStar"
 import Image from "next/image"
 import { memo } from "react"
-import { LinkButton } from "../../Button"
+import { Button } from "../../Button"
 
 interface ProductTilePropsI {
   product: GetProductsQuery["products"][0]
@@ -11,7 +11,7 @@ interface ProductTilePropsI {
 
 const ProductCard: React.FC<ProductTilePropsI> = ({ product }) => {
   return (
-    <Link href={`product/${product.slug}`} passHref>
+    <Link data-testid="product-card-link" href={`product/${product.slug}`}>
       <div
         className="w-full flex md:hover:scale-105
       md:transform md:transition
@@ -29,20 +29,19 @@ const ProductCard: React.FC<ProductTilePropsI> = ({ product }) => {
             className="h-48 md:h-80"
           >
             <Image
+              data-testid="product-image"
               src={product.image}
-              layout="fill"
-              objectFit="contain"
+              fill
+              style={{ objectFit: "contain" }}
               alt="product image"
             />
           </div>
         </div>
         <div className="flex justify-between flex-1 flex-col px-1 pb-2  md:px-5 md:pb-5">
           <div>
-            <a href="#">
-              <h5 className="text-md md:text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
-                {product.title}
-              </h5>
-            </a>
+            <h5 className="text-md md:text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
+              {product.title}
+            </h5>
             <ReviewStars
               rate={product.rating.rate}
               count={product.rating.count}
@@ -53,7 +52,7 @@ const ProductCard: React.FC<ProductTilePropsI> = ({ product }) => {
               {product?.price}$
             </span>
             <div className="flex justify-end w-full md:w-auto mt-1">
-              <LinkButton title="Checkout" href={`product/${product.slug}`} />
+              <Button title="Checkout" />
             </div>
           </div>
         </div>

@@ -26,7 +26,7 @@ export const ColorAccordion = () => {
               onChange={handleColors}
               key={index}
               label={color}
-              checked={colors.includes(color)}
+              defaultChecked={colors.includes(color)}
             />
           ))}
       </div>

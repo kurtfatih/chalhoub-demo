@@ -1,12 +1,17 @@
 import { Disclosure } from "@headlessui/react"
 import { ChevronUpIcon } from "@heroicons/react/20/solid"
+import { PropsWithChildren } from "react"
 
 interface Accordion {
   defaultOpen: boolean
   title: string
 }
 
-const Accordion: React.FC<Accordion> = ({ defaultOpen, title, children }) => {
+const Accordion: React.FC<PropsWithChildren<Accordion>> = ({
+  defaultOpen,
+  title,
+  children
+}) => {
   return (
     <div className="w-full">
       <div className="w-full bg-white">
