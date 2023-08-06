@@ -1,5 +1,10 @@
 {
   "name": "chalhoub-demo",
+  "author": {
+    "email": "fatihkurt387@gmail.com",
+    "name": "Fatih Kurt",
+    "url": "https://fatih-kurt.com"
+  },
   "version": "0.1.0",
   "private": true,
   "scripts": {
