@@ -19,7 +19,6 @@ export const PriceAccordion: React.FC<PriceAccordionPropsI> = ({
     if (e.currentTarget.checked) {
       setPrices([...prices, { start: value.start, end: value.end }])
     } else {
-      console.debug("hey", prices)
       setPrices(
         prices.filter(
           ({ start, end }) => start !== value.start && end !== value.end
