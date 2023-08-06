@@ -1,34 +1,89 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Chalhoub Demo - Getting Started
 
-## Getting Started
+This repository contains the source code for the Chalhoub Demo project. This document will guide you on how to set up and run the project on your local machine.
 
-First, run the development server:
+## Prerequisites
+Before you start, ensure that you have the following software installed on your machine:
 
+Node.js (v16 or higher)
+npm (Node Package Manager) or yarn
+Git (optional, but recommended)
+
+1. Clone the repository:
+```bash
+git clone https://github.com/username/chalhoub-demo.git
+```
+
+2. Navigate to the project directory:
+```bash
+cd chalhoub-demo
+```
+3. Install project dependencies using npm or yarn::
+```bash
+npm install
+# or
+yarn install
+```
+## Running the Application
+
+The project is built with Next.js, a React framework. To run the application, follow these steps:
+
+1. Start the development server::
 ```bash
 npm run dev
 # or
 yarn dev
 ```
+This will start the development server and automatically open the application in your default web browser. You can access it at http://localhost:3000.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. If you want to build the application for production, use the following command:
+```bash
+npm run build
+# or
+yarn build
+```
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+3. After the build is complete, you can run the production version of the application:
+```bash
+npm run start
+# or
+yarn start
+```
+## GraphQL Code Generation
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+This project uses GraphQL Code Generator to generate types based on your GraphQL schema and operations. You can compile and watch for changes to your GraphQL code using the provided scripts:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+-To compile the GraphQL code:
+```bash
+npm run compile
+# or
+yarn compile
+```
+-To watch for changes and automatically recompile::
+```bash
+npm run watch
+# or
+yarn watch
+```
 
-## Learn More
+## Testing
 
-To learn more about Next.js, take a look at the following resources:
+The project uses Jest as the testing framework. To run the tests, use the following command:
+```bash
+npm test
+# or
+yarn test
+```
+## Additional Information
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+For more information about the tools and libraries used in this project, refer to their official documentation:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Apollo Client](https://www.apollographql.com/docs/react/)
+- [Apollo Server](https://www.apollographql.com/docs/apollo-server/)
+- [React](https://legacy.reactjs.org/docs/getting-started.html)
+- [Tailwind CSS](https://tailwindcss.com/docs/installation)
+- [Zustand](https://docs.pmnd.rs/zustand/getting-started/introduction)
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
+- [Jest](https://jestjs.io/docs/getting-started)
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
